@@ -1,6 +1,8 @@
 // ================== Start Example 1 ==================
-const canvas1 = document.getElementById('canvas1');
-const ctx1 = canvas1.getContext('2d');
+// First Example - background image
+
+const canvas = document.getElementById('canvas1');
+const ctx = canvas.getContext('2d');
 
 const colorPicker = document.getElementById('color-picker');
 const erasingTool = document.getElementById('erasing');
@@ -15,10 +17,13 @@ erasingTool.addEventListener('change', () => {
     erasing = !erasing;
 })
 
-ctx1.drawOrErase = function(x, y, color) {
+ctx.drawOrErase = function(x, y, color) {
     this.beginPath();
     this.fillStyle = color;
     this.lineJoin = 'round';
+    // if(erasing2){
+    //     this.globalCompositeOperation = 'destination-out'
+    // }
     this.moveTo(x, y);
     this.arc(x, y, 10, 0, Math.PI * 2, false);
     this.fill();
@@ -26,104 +31,46 @@ ctx1.drawOrErase = function(x, y, color) {
   };
 
 // listen to mouse events
-canvas1.onmousemove = e => {
-    const x = e.pageX - canvas1.offsetLeft
-    const y = e.pageY - canvas1.offsetTop
+canvas.onmousemove = e => {
+    const x = e.pageX - canvas.offsetLeft
+    const y = e.pageY - canvas.offsetTop
 
-    if (!canvas1.mouseIsDown && !erasing) {
+    if (!canvas.mouseIsDown && !erasing) {
         return;
     }
-    if(canvas1.mouseIsDown){
+    if(canvas.mouseIsDown){
         if(erasing){
-            ctx1.drawOrErase(x, y, '#fff');
+            ctx.drawOrErase(x, y, '#fff');
         }
         if(!erasing) {
-            ctx1.drawOrErase(x, y, color);
+            ctx.drawOrErase(x, y, color);
         }
     }
 };
 
-canvas1.onmousedown = () => {
-    canvas1.mouseIsDown = true;
+canvas.onmousedown = () => {
+    canvas.mouseIsDown = true;
 };
 
-canvas1.onmouseup = () => {
-    canvas1.mouseIsDown = false;
+canvas.onmouseup = () => {
+    canvas.mouseIsDown = false;
 };
-
 // ================== End Example 1 ==================
+
+
+// this.globalCompositeOperation = 'destination-out'
 
 
 
 // ================== Start Example 2 ==================
-// Second Example - background image
 
+// Second example - SCRATCH CARD
 const canvas2 = document.getElementById('canvas2');
 const ctx2 = canvas2.getContext('2d');
+ctx2.fillStyle = '#ddd';
+ctx2.fillRect(0,0,900,500);
 
-const colorPicker2 = document.getElementById('color-picker2');
-const erasingTool2 = document.getElementById('erasing2');
-let color2 = colorPicker2.value;
-let erasing2 = false;
-
-colorPicker2.addEventListener('change', () => {
-    color2 = colorPicker2.value;
-});
-
-erasingTool2.addEventListener('change', () => {
-    erasing2 = !erasing2;
-})
-
-ctx2.drawOrErase = function(x, y, color2) {
-    this.beginPath();
-    this.fillStyle = color2;
-    this.lineJoin = 'round';
-    this.moveTo(x, y);
-    this.arc(x, y, 10, 0, Math.PI * 2, false);
-    this.fill();
-    this.closePath();
-  };
-
-// listen to mouse events
-canvas2.onmousemove = e => {
-    const x = e.pageX - canvas2.offsetLeft
-    const y = e.pageY - canvas2.offsetTop
-
-    if (!canvas2.mouseIsDown && !erasing) {
-        return;
-    }
-    if(canvas2.mouseIsDown){
-        if(erasing2){
-            ctx2.drawOrErase(x, y, '#fff');
-        }
-        if(!erasing2) {
-            ctx2.drawOrErase(x, y, color2);
-        }
-    }
-};
-
-canvas2.onmousedown = () => {
-    canvas2.mouseIsDown = true;
-};
-
-canvas2.onmouseup = () => {
-    canvas2.mouseIsDown = false;
-};
-// ================== End Example 2 ==================
-
-
-
-
-
-// ================== Start Example 3 ==================
-
-// THIRD EXAMPLE - SCRATCH CARD
-const canvas3 = document.getElementById('canvas3');
-const ctx3 = canvas3.getContext('2d');
-ctx3.fillStyle = '#ddd';
-ctx3.fillRect(0,0,900,500);
-
-ctx3.erase = function(x, y) {
+ctx2.erase = function(x, y) {
   this.globalCompositeOperation = 'destination-out';
   this.lineJoin = 'round'; 
   this.lineWidth = 10;
@@ -135,20 +82,20 @@ ctx3.erase = function(x, y) {
 };
 
 // listen to mouse events
-canvas3.onmousemove = e => {
-    if (!canvas3.isDrawing) {
+canvas2.onmousemove = e => {
+    if (!canvas2.isDrawing) {
         return;
     }
-    const x = e.pageX - canvas3.offsetLeft
-    const y = e.pageY - canvas3.offsetTop
-    ctx3.erase(x, y);
+    const x = e.pageX - canvas2.offsetLeft
+    const y = e.pageY - canvas2.offsetTop
+    ctx2.erase(x, y);
 };
 
-canvas3.onmousedown = () => {
-    canvas3.isDrawing = true;
+canvas2.onmousedown = () => {
+    canvas2.isDrawing = true;
 };
 
-canvas3.onmouseup = () => {
-    canvas3.isDrawing = false;
+canvas2.onmouseup = () => {
+    canvas2.isDrawing = false;
 };
-// ================== End Example 3 ==================
+// ================== End Example 2 ==================
