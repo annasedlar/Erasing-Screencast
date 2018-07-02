@@ -19,11 +19,13 @@ erasingTool.addEventListener('change', () => {
 
 ctx.drawOrErase = function(x, y, color) {
     this.beginPath();
+    if(erasing){
+        this.globalCompositeOperation = 'destination-out';
+    } else {
+        this.globalCompositeOperation = 'source-over';
+    }
     this.fillStyle = color;
     this.lineJoin = 'round';
-    // if(erasing2){
-    //     this.globalCompositeOperation = 'destination-out'
-    // }
     this.moveTo(x, y);
     this.arc(x, y, 10, 0, Math.PI * 2, false);
     this.fill();
@@ -58,8 +60,6 @@ canvas.onmouseup = () => {
 // ================== End Example 1 ==================
 
 
-// this.globalCompositeOperation = 'destination-out'
-
 
 
 // ================== Start Example 2 ==================
@@ -71,14 +71,14 @@ ctx2.fillStyle = '#ddd';
 ctx2.fillRect(0,0,900,500);
 
 ctx2.erase = function(x, y) {
-  this.globalCompositeOperation = 'destination-out';
-  this.lineJoin = 'round'; 
-  this.lineWidth = 10;
-  this.beginPath();
-  this.moveTo(x, y);
-  this.arc(x, y, 25, 0, Math.PI * 2, false);
-  this.closePath();
-  this.fill();
+    this.globalCompositeOperation = 'destination-out';
+    this.lineJoin = 'round'; 
+    this.lineWidth = 10;
+    this.beginPath();
+    this.moveTo(x, y);
+    this.arc(x, y, 25, 0, Math.PI * 2, false);
+    this.closePath();
+    this.fill();
 };
 
 // listen to mouse events
