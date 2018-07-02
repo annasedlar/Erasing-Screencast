@@ -7,8 +7,27 @@
   <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
 </head>
 <body>
+  <h1>Regular White Brush Eraser</h1>
+  <div class="controls">
+      <input type="color" default="#ff0000" value="#ff0000" id="color-picker"/>
+      <label>Erasing?</label>
+      <input type="checkbox" id="erasing">
+  </div>
+  <canvas id="canvas1" width="500" height="500">
+  </canvas>
+
+  <h1>globalCompositeOperation = "destination-out"</h1>
+  <div class="controls">
+      <input type="color" default="#ff0000" value="#ff0000" id="color-picker2"/>
+      <label>Erasing?</label>
+      <input type="checkbox" id="erasing2">
+  </div>
+  <canvas id="canvas2" width="500" height="500">
+  </canvas>
+
   <h1>Are you a lucky winner?</h1>
-  <canvas id="canvas" width="900" height="500">
+  <h4>Scratch off to see!</h4>
+  <canvas id="canvas3" width="900" height="500">
   </canvas>
 <script src="index.js"></script>
 </body>

@@ -1,15 +1,44 @@
-#canvas {
-  background:url(jackpot.png);
+h1 { 
+  text-align: center;
+  font-size: 48px;
+  margin-top: 15%;
+}
+
+h4 {
+  text-align: center;
+}
+
+.controls {
+  margin-top: 30px;
+  margin-bottom: 5px;
+  margin-left: 5%;
+}
+
+#canvas1 {
   border: 1px solid black;
-  position: absolute;
+  position: relative;
+  margin-left: 5%;
+}
+
+#canvas2 {
+  background:url(bnr.png);
+  background-size: 500px 500px;
+  border: 1px solid black;
+  position: relative;
   top:0;
   bottom: 0;
   left: 0;
   right: 0;
-  margin:auto;
+  margin-left: 5%;
 }
 
-h1 { 
-  text-align: center;
-  font-size: 48px;
+#canvas3 {
+  background:url(jackpot.png);
+  border: 1px solid black;
+  position: relative;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: 5%;
 }
